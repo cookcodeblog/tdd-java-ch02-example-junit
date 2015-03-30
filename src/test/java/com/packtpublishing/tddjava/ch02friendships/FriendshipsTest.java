@@ -48,7 +48,9 @@ public class FriendshipsTest {
     @Test
     public void joeIsFriendWithEveryone() {
         List<String> friendsOfJoe = Arrays.asList("Audrey", "Peter", "Michael", "Britney", "Paul");
-        Assert.assertTrue(friendships.getFriendsList("Joe").containsAll(friendsOfJoe));
+        Assert.assertTrue(
+                friendships.getFriendsList("Joe").containsAll(friendsOfJoe)
+        );
     }
 
 }
