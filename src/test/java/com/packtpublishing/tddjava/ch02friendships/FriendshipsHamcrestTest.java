@@ -13,11 +13,6 @@ public class FriendshipsHamcrestTest {
 
     Friendships friendships;
 
-    @BeforeClass
-    public static void beforeClass() {
-        // This method will be executed once on initialization time
-    }
-
     @Before
     public void before() {
         friendships = new Friendships();
@@ -27,6 +22,7 @@ public class FriendshipsHamcrestTest {
         friendships.makeFriends("Joe", "Britney");
         friendships.makeFriends("Joe", "Paul");
     }
+
     @Test
     public void alexDoesNotHaveFriends() {
         assertThat(friendships.getFriendsList("Alex"), empty());

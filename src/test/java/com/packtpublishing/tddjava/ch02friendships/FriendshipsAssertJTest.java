@@ -1,42 +1,36 @@
 package com.packtpublishing.tddjava.ch02friendships;
 
+import org.hamcrest.MatcherAssert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.empty;
 
 public class FriendshipsAssertJTest {
-    @Test
-    public void test1() {
-        Friendships friendships = new Friendships();
 
-        assertThat(friendships.getFriendsList("Joe")).isEmpty();
-    }
+    Friendships friendships;
 
-    @Test
-    public void test2() {
-        Friendships friendships = new Friendships();
-        friendships.makeFriends("Joe", "Audrey");
-
-        assertThat(friendships.areFriends("Joe", "Audrey")).isTrue();
-        assertThat(friendships.areFriends("Audrey", "Joe")).isTrue();
-
-        assertThat(friendships.getFriendsList("Joe")).hasSize(1).contains("Audrey");
-
-        assertThat(friendships.getFriendsList("Audrey")).hasSize(1).contains("Joe");
-    }
-
-    @Test(timeout = 20)
-    public void test3() {
-        Friendships friendships = new Friendships();
+    @Before
+    public void before() {
+        friendships = new Friendships();
         friendships.makeFriends("Joe", "Audrey");
         friendships.makeFriends("Joe", "Peter");
         friendships.makeFriends("Joe", "Michael");
         friendships.makeFriends("Joe", "Britney");
         friendships.makeFriends("Joe", "Paul");
-
-        assertThat(friendships.areFriends("Joe", "Paul")).isTrue();
-        assertThat(friendships.areFriends("Audrey", "Ralph")).isFalse();
-
-        assertThat(friendships.getFriendsList("Joe")).containsOnly("Audrey", "Peter", "Michael", "Britney", "Paul");
     }
+
+    @Test
+    public void alexDoesNotHaveFriends() {
+        assertThat(friendships.getFriendsList("Alex")).isEmpty();
+    }
+
+    @Test
+    public void joeHas5Friends() {
+        assertThat(friendships.getFriendsList("Joe"))
+                .hasSize(5)
+                .containsOnly("Audrey", "Peter", "Michael", "Britney", "Paul");
+    }
+
 }

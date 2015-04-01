@@ -12,10 +12,6 @@ dependencies {
     compile group: 'org.jongo', name: 'jongo', version: '1.1'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '2.+'
 
-    // As we are using JDK7, jacoco version must be updated
-    jacocoAnt 'org.jacoco:org.jacoco.ant:0.7.4.201502262128'
-    jacocoAgent 'org.jacoco:org.jacoco.agent:0.7.4.201502262128'
-
     // Dependencies just for testing and won't be added to your project
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
